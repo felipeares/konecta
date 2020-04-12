@@ -2,12 +2,8 @@
  "name": "konecta",
  "version": "1.0.0",
  "description": "konecta test site",
- "author": "felipeares",
+ "author": "konecta",
  "license": "GPLv3",
- "repository": {
-  "type": "git",
-  "url": "https://bitbucket.org/pasqualevitiello/agnes.git"
- },
  "scripts": {
   "clean": "rimraf dist/{css/*,js/*,images/*}",
   "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
@@ -26,7 +22,7 @@
   "watch:images": "onchange \"src/images\" -- run-s build:images",
   "watch": "run-p serve watch:*",
   "postinstall": "run-s build watch",
-  "deploy": "aws s3 sync ./ s3://konecta-web --profile felipeares"
+  "deploy": "aws s3 sync ./dist s3://konecta-web/dist --profile felipeares && aws s3 cp index.html s3://konecta-web/ --profile felipeares"
  },
  "devDependencies": {
   "autoprefixer": "^9.0.1",
